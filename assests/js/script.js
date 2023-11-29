@@ -1,10 +1,6 @@
 //Dependencies
 var startButton = document.querySelector("#start-button");
 var startPage = document.querySelector("#start-page");
-var questions = document.querySelectorAll(".Quiz-questions");
-var random = document.getElementById;
-// var answer = querySelector.("")
-var nextQuestionAns = document.querySelector(".user-view");
 
 //Global variables
 // questions as objects with the answers

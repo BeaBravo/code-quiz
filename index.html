@@ -12,7 +12,7 @@
       <span id="time">timer goes here</span>
     </header>
     <main class="user-view">
-      <div id="start-page" data-state="visible">
+      <div id="start-page">
         <h1>Coding Quiz Challenge</h1>
         <p>
           This will consist of ## questions. if answered incorrectly, 5 seconds
@@ -21,50 +21,9 @@
         </p>
         <button id="start-button">Start Quiz!</button>
       </div>
-      <div class="Quiz-questions" data-state="hidden">
-        <h1>Question 1 goes here</h1>
-        <ol id="choices">
-          <li>option1</li>
-          <li id="correct-answer">option2</li>
-          <li>option3</li>
-          <li>option4</li>
-        </ol>
-      </div>
-      <div class="Quiz-questions" data-number="2" data-state="hidden">
-        <h1>Question 2 goes here</h1>
-        <ol id="choices" data-correctAnswer="3">
-          <li>option1</li>
-          <li>option2</li>
-          <li>option3</li>
-          <li>option4</li>
-        </ol>
-      </div>
-      <div class="Quiz-questions" data-number="3" data-state="hidden">
-        <h1>Question 3 goes here</h1>
-        <ol id="choices" data-correctAnswer="3">
-          <li>option1</li>
-          <li>option2</li>
-          <li>option3</li>
-          <li>option4</li>
-        </ol>
-      </div>
-      <div class="Quiz-questions" data-number="4" data-state="hidden">
-        <h1>Question 4 goes here</h1>
-        <ol id="choices" data-correctAnswer="3">
-          <li>option1</li>
-          <li>option2</li>
-          <li>option3</li>
-          <li>option4</li>
-        </ol>
-      </div>
-      <div class="Quiz-questions" data-number="5" data-state="hidden">
-        <h1>Question 5 goes here</h1>
-        <ol id="choices" data-correctAnswer="3">
-          <li>option1</li>
-          <li>option2</li>
-          <li>option3</li>
-          <li>option4</li>
-        </ol>
+      <div class="Quiz-questions">
+        <h1 id="current-question"></h1>
+        <ol id="multiple-choice"></ol>
       </div>
 
       <script src="./assests/js/script.js"></script>
