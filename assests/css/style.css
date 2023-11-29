@@ -1,3 +1,26 @@
 .Quiz-questions {
   display: none;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+
+  margin: 2rem;
+  width: 75vh;
+  align-items: center;
+}
+
+main div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

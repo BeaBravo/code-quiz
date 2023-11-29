@@ -1,13 +1,13 @@
 var startButton = document.querySelector("#start-button");
 var startPage = document.querySelector("#start-page");
 var questions = document.querySelectorAll(".Quiz-questions");
-var answered = document.querySelectorAll("#choices");
+// var answer = querySelector.("")
 var nextQuestionAns = document.querySelector(".user-view");
 var index = 0;
 var currentQuestion;
 
 console.log("display", questions[0].style);
-console.log(answered);
+// console.log(answered);
 function startQuiz(event) {
   event.stopPropagation();
   //this is where the timer will start
