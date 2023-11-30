@@ -34,18 +34,21 @@
       <div id="after-game-window" style="display: none">
         <h1 id="after-message"></h1>
         <p></p>
-        <input
-          id="initals"
-          type="text"
-          placeholder="enter your initials"
-          style="display: none"
-        />
-        <button id="save-score" style="display: none">Save score</button>
+        <form id="highscore-form" method="POST" style="display: none">
+          <label for="initials-text">Enter your initials: </label>
+          <input
+            id="initals"
+            type="text"
+            placeholder="BB"
+            name="initials-text"
+          />
+        </form>
         <button id="after-button">Play again</button>
       </div>
 
       <div id="highscores-window" style="display: none">
         <h1 id="highsores">High Scores</h1>
+        <ul id="highscore-list"></ul>
       </div>
 
       <script src="./assests/js/script.js"></script>

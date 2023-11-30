@@ -12,7 +12,8 @@ var afterMessage = document.querySelector("#after-message");
 var highScoresPage = document.querySelector("#highscores-window");
 var afterButton = document.querySelector("#after-button");
 var inputEl = document.querySelector("#initals");
-var saveScoreEl = document.querySelector("#save-score");
+var highScoreForm = document.querySelector("#highscore-form");
+var highScoreList = document.querySelector("#highscore-list");
 
 //Global variables
 var answer;
@@ -21,6 +22,7 @@ var index = 0; //this is the index for the questions.
 var timeLeft;
 var score;
 var storedScores = localStorage.getItem("scores") || 0;
+var initials;
 // questions as objects with the answers
 var question1 = {
   question: "Arrays in JavaScript can be used to store ___.",
@@ -137,13 +139,17 @@ function winGame() {
   //save highscore
   gamePage.setAttribute("style", "display:none");
   afterWindow.setAttribute("style", "");
-  inputEl.setAttribute("style", "");
-  saveScoreEl.setAttribute("style", "");
+  highScoreForm.setAttribute("style", "");
   afterMessage.textContent = "Nicely done! You won!";
-  afterMessage.nextSibling.textContent = "Your final score is: " + score;
+  afterMessage.nextSibling.textContent = "Your final score is: " + timeLeft;
+  saveHighScore();
   //need to save in local storage with JSON
   //show highscores
   displayHighScores();
+}
+
+function saveHighScore() {
+  console.log(inputEl.value);
 }
 
 function displayHighScores() {
@@ -165,6 +171,12 @@ function playAgain(event) {
 startButton.addEventListener("click", startQuiz);
 choices.addEventListener("click", answerQuestion);
 afterButton.addEventListener("click", playAgain);
+highScoreForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  initials = inputEl.value.trim();
+  console.log(initials);
+  return initials;
+});
 
 //INITIALIZATION
 init();
