@@ -37,7 +37,7 @@ var questions = [question1, question2];
 
 //FUNCTIONS
 function init() {
-  timeLeft = 10;
+  timeLeft = 60;
   timerEl.textContent = "time: " + timeLeft;
 }
 
@@ -48,8 +48,10 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = "time: " + timeLeft;
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
+      timeLeft = 0;
       clearInterval(timerInterval);
+      //stops game gameOver();
       return;
     }
   }, 1000);
@@ -98,7 +100,7 @@ function checkAnswer() {
   if (answer.textContent !== currentQuestion[currentQuestion.correct]) {
     console.log("wrong");
     // take 7 seconds from time
-    // timeLeft=timeLeft-7;
+    timeLeft = timeLeft - 7;
     // add a message on the screen
     message.textContent = "Incorrect!";
     message.setAttribute("style", "color:red");
@@ -108,6 +110,7 @@ function checkAnswer() {
     message.textContent = "Correct!";
     message.setAttribute("style", "color:green");
   }
+  return timeLeft;
 }
 
 //USER INTERACTIONS
