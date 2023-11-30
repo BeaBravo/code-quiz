@@ -15,7 +15,7 @@ var afterButton = document.querySelector("#after-button");
 //Global variables
 var answer;
 var currentQuestion;
-var index = 0;
+var index = 0; //this is the index for the questions.
 var timeLeft;
 // questions as objects with the answers
 var question1 = {
@@ -61,6 +61,13 @@ function startTimer() {
       timerEl.textContent = "time: " + timeLeft;
       clearInterval(timerInterval);
       gameOver();
+      return;
+    }
+
+    if (index === questions.length && timeLeft > 0) {
+      //this means you answered all the questions, you win the game
+      clearInterval(timerInterval);
+      winGame();
       return;
     }
   }, 1000);
@@ -125,8 +132,11 @@ function gameOver() {
 }
 
 function winGame() {
-  //timer stops
+  console.log("you won the game!");
   //save highscore
+  gamePage.setAttribute("style", "display:none");
+  afterWindow.setAttribute("style", "display:block");
+  afterMessage.textContent = "Nicely done! You won!";
   //show highscores
 }
 
