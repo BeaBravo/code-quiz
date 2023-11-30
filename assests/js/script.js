@@ -1,6 +1,9 @@
 //Dependencies
 var startButton = document.querySelector("#start-button");
 var startPage = document.querySelector("#start-page");
+var gamePage = document.querySelector("#quiz-questions");
+var questionDisplay = document.querySelector("#current-question");
+var choices = document.querySelector("#multiple-choice");
 
 //Global variables
 // questions as objects with the answers
@@ -27,13 +30,33 @@ var questions = [question1, question2];
 
 //FUNCTIONS
 function init() {
-  console.log(question1.question);
-  console.log(question1.option1);
+  i = 1;
+  console.log(question1["option" + i]);
   console.log(questions);
 }
+
+//
 function startQuiz() {
+  //make start page disappear and question div appear
+  startPage.setAttribute("style", "display:none");
+  gamePage.setAttribute("style", "display:block");
   //start timer
+  //startTimer()
   //go to first question
+  displayQuestion();
+}
+
+function displayQuestion() {
+  //grab question from questions variable and make <li>
+  // answer question and save the click with event.target
+  var index = 0;
+  var currentQuestion = questions[index];
+  questionDisplay.textContent = currentQuestion.question;
+  for (i = 1; i < 5; i++) {
+    var option = document.createElement("li");
+    option.textContent = currentQuestion["option" + i];
+    choices.appendChild(option);
+  }
 }
 
 //USER INTERACTIONS
