@@ -21,8 +21,9 @@ var currentQuestion;
 var index = 0; //this is the index for the questions.
 var timeLeft;
 var score;
-var storedScores = localStorage.getItem("scores") || 0;
+var storedScores = JSON.parse(localStorage.getItem("highscores"));
 var initials;
+var highscores = [];
 // questions as objects with the answers
 var question1 = {
   question: "Arrays in JavaScript can be used to store ___.",
@@ -49,6 +50,11 @@ var questions = [question1, question2];
 function init() {
   timeLeft = 60;
   timerEl.textContent = "time: " + timeLeft;
+  message.textContent = "";
+
+  if (storedScores !== null) {
+    highscores = storedScores;
+  }
 }
 
 //
@@ -75,8 +81,7 @@ function startTimer() {
   }, 1000);
 }
 
-function startQuiz(event) {
-  event.stopPropagation();
+function startQuiz() {
   //make start page disappear and question div appear
   startPage.setAttribute("style", "display:none");
   gamePage.setAttribute("style", "display:block");
@@ -100,10 +105,9 @@ function displayQuestion() {
   return currentQuestion;
 }
 
-function answerQuestion(event) {
-  event.stopPropagation();
+function answerQuestion() {
   //click 1 of the 4 answers and save this as the answer
-  answer = event.target;
+
   //check if correct
   checkAnswer();
 
@@ -142,22 +146,40 @@ function winGame() {
   highScoreForm.setAttribute("style", "");
   afterMessage.textContent = "Nicely done! You won!";
   afterMessage.nextSibling.textContent = "Your final score is: " + timeLeft;
-  saveHighScore();
   //need to save in local storage with JSON
   //show highscores
   displayHighScores();
 }
 
 function saveHighScore() {
-  console.log(inputEl.value);
+  score = {
+    initials: initials,
+    time: timeLeft,
+  };
+
+  highscores.push(score);
+  inputEl.value = "";
+
+  localStorage.setItem("highscores", JSON.stringify(highscores));
+  displayHighScores();
 }
 
 function displayHighScores() {
   highScoresPage.setAttribute("style", "");
+
+  highScoreList.innerHTML = "";
+
+  for (var i = 0; i < highscores.length; i++) {
+    var li = document.createElement("li");
+    li.setAttribute("class", "HS-item");
+    li.textContent =
+      highscores[i].initials + " - " + highscores[i].time + " seconds";
+
+    highScoreList.appendChild(li);
+  }
 }
 
-function playAgain(event) {
-  event.stopPropagation();
+function playAgain() {
   index = 0;
   startPage.setAttribute("style", "");
   gamePage.setAttribute("style", "display:none");
@@ -168,13 +190,31 @@ function playAgain(event) {
 
 //USER INTERACTIONS
 
-startButton.addEventListener("click", startQuiz);
-choices.addEventListener("click", answerQuestion);
-afterButton.addEventListener("click", playAgain);
+startButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  startQuiz();
+});
+choices.addEventListener("click", function (event) {
+  event.stopPropagation();
+  answer = event.target;
+  answerQuestion();
+});
+
+afterButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  playAgain();
+});
+
 highScoreForm.addEventListener("submit", function (event) {
   event.preventDefault();
+  event.stopPropagation();
   initials = inputEl.value.trim();
-  console.log(initials);
+
+  if (initials === "") {
+    return;
+  }
+
+  saveHighScore();
   return initials;
 });
 
