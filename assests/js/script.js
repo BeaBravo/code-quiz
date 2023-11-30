@@ -14,6 +14,7 @@ var afterButton = document.querySelector("#after-button");
 var inputEl = document.querySelector("#initals");
 var highScoreForm = document.querySelector("#highscore-form");
 var highScoreList = document.querySelector("#highscore-list");
+var viewHighScores = document.querySelector("#highscores");
 
 //Global variables
 var answer;
@@ -219,6 +220,12 @@ highScoreForm.addEventListener("submit", function (event) {
 
   saveHighScore();
   return initials;
+});
+
+viewHighScores.addEventListener("click", function (event) {
+  event.stopPropagation();
+  startPage.setAttribute("style", "display:none");
+  displayHighScores();
 });
 
 //INITIALIZATION
