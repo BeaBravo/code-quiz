@@ -11,12 +11,16 @@ var afterWindow = document.querySelector("#after-game-window");
 var afterMessage = document.querySelector("#after-message");
 var highScoresPage = document.querySelector("#highscores-window");
 var afterButton = document.querySelector("#after-button");
+var inputEl = document.querySelector("#initals");
+var saveScoreEl = document.querySelector("#save-score");
 
 //Global variables
 var answer;
 var currentQuestion;
 var index = 0; //this is the index for the questions.
 var timeLeft;
+var score;
+var storedScores = localStorage.getItem("scores") || 0;
 // questions as objects with the answers
 var question1 = {
   question: "Arrays in JavaScript can be used to store ___.",
@@ -130,18 +134,26 @@ function gameOver() {
 }
 
 function winGame() {
-  console.log("you won the game!");
   //save highscore
   gamePage.setAttribute("style", "display:none");
-  afterWindow.setAttribute("style", "display:block");
+  afterWindow.setAttribute("style", "");
+  inputEl.setAttribute("style", "");
+  saveScoreEl.setAttribute("style", "");
   afterMessage.textContent = "Nicely done! You won!";
+  afterMessage.nextSibling.textContent = "Your final score is: " + score;
+  //need to save in local storage with JSON
   //show highscores
+  displayHighScores();
+}
+
+function displayHighScores() {
+  highScoresPage.setAttribute("style", "");
 }
 
 function playAgain(event) {
   event.stopPropagation();
   index = 0;
-  startPage.setAttribute("style", "display:block");
+  startPage.setAttribute("style", "");
   gamePage.setAttribute("style", "display:none");
   afterWindow.setAttribute("style", "display:none");
   highScoresPage.setAttribute("style", "display:none");
