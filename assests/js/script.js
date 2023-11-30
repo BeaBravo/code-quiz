@@ -31,11 +31,12 @@ var questions = [question1, question2];
 //FUNCTIONS
 function init() {
   i = 1;
-  console.log(question1["option" + i]);
+  console.log(question1);
   console.log(questions);
 }
 
 //
+
 function startQuiz() {
   //make start page disappear and question div appear
   startPage.setAttribute("style", "display:none");
@@ -57,11 +58,23 @@ function displayQuestion() {
     option.textContent = currentQuestion["option" + i];
     choices.appendChild(option);
   }
+  var answer = answerQuestion();
+  console.log(answer);
+}
+
+function answerQuestion(event) {
+  event.stopPropagation();
+  console.log("you clicked an option");
+  //click 1 of the 4 answers and save this as the answer
+  var answer = event.target;
+  // console.log(answer);
+  return answer;
 }
 
 //USER INTERACTIONS
 
 startButton.addEventListener("click", startQuiz);
+choices.addEventListener("click", answerQuestion);
 
 //INITIALIZATION
 init();
