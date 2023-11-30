@@ -48,9 +48,10 @@ var questions = [question1, question2];
 
 //FUNCTIONS
 function init() {
-  timeLeft = 60;
+  timeLeft = 10;
   timerEl.textContent = "time: " + timeLeft;
   message.textContent = "";
+  afterMessage.nextSibling.textContent = "";
 
   if (storedScores !== null) {
     highscores = storedScores;
@@ -84,7 +85,7 @@ function startTimer() {
 function startQuiz() {
   //make start page disappear and question div appear
   startPage.setAttribute("style", "display:none");
-  gamePage.setAttribute("style", "display:block");
+  gamePage.setAttribute("style", "display:flex");
   //start timer
   startTimer();
   //go to first question
@@ -121,8 +122,8 @@ function answerQuestion() {
 
 function checkAnswer() {
   if (answer.textContent !== currentQuestion[currentQuestion.correct]) {
-    // take 7 seconds from time
-    timeLeft = timeLeft - 7;
+    // take 10 seconds from time
+    timeLeft = timeLeft - 10;
     // add a message on the screen
     message.textContent = "Incorrect!";
     message.setAttribute("style", "color:red");
@@ -135,7 +136,7 @@ function checkAnswer() {
 
 function gameOver() {
   gamePage.setAttribute("style", "display:none");
-  afterWindow.setAttribute("style", "display:block");
+  afterWindow.setAttribute("style", "");
   afterMessage.textContent = "Time is up! GAME OVER";
 }
 
@@ -212,6 +213,8 @@ highScoreForm.addEventListener("submit", function (event) {
 
   if (initials === "") {
     return;
+  } else {
+    inputEl.disabled = true;
   }
 
   saveHighScore();
