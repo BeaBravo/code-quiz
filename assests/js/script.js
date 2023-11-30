@@ -7,6 +7,10 @@ var choices = document.querySelector("#multiple-choice");
 var option = choices.children;
 var message = document.querySelector("#message");
 var timerEl = document.querySelector("#time");
+var afterWindow = document.querySelector("#after-game-window");
+var afterMessage = document.querySelector("#after-message");
+var highScoresPage = document.querySelector("#highscores-window");
+var afterButton = document.querySelector("#after-button");
 
 //Global variables
 var answer;
@@ -39,6 +43,10 @@ var questions = [question1, question2];
 function init() {
   timeLeft = 60;
   timerEl.textContent = "time: " + timeLeft;
+  startPage.setAttribute("style", "display:block");
+  gamePage.setAttribute("style", "display:none");
+  afterWindow.setAttribute("style", "display:none");
+  highScoresPage.setAttribute("style", "display:none");
 }
 
 //
@@ -50,8 +58,9 @@ function startTimer() {
     timerEl.textContent = "time: " + timeLeft;
     if (timeLeft <= 0) {
       timeLeft = 0;
+      timerEl.textContent = "time: " + timeLeft;
       clearInterval(timerInterval);
-      //stops game gameOver();
+      gameOver();
       return;
     }
   }, 1000);
@@ -82,7 +91,6 @@ function displayQuestion() {
 
 function answerQuestion(event) {
   event.stopPropagation();
-  console.log("you clicked an option");
   //click 1 of the 4 answers and save this as the answer
   answer = event.target;
   //check if correct
@@ -98,25 +106,35 @@ function answerQuestion(event) {
 
 function checkAnswer() {
   if (answer.textContent !== currentQuestion[currentQuestion.correct]) {
-    console.log("wrong");
     // take 7 seconds from time
     timeLeft = timeLeft - 7;
     // add a message on the screen
     message.textContent = "Incorrect!";
     message.setAttribute("style", "color:red");
   } else {
-    console.log("that's right!!");
     // add a message on the screen
     message.textContent = "Correct!";
     message.setAttribute("style", "color:green");
   }
-  return timeLeft;
+}
+
+function gameOver() {
+  gamePage.setAttribute("style", "display:none");
+  afterWindow.setAttribute("style", "display:block");
+  afterMessage.textContent = "Time is up! GAME OVER";
+}
+
+function winGame() {
+  //timer stops
+  //save highscore
+  //show highscores
 }
 
 //USER INTERACTIONS
 
 startButton.addEventListener("click", startQuiz);
 choices.addEventListener("click", answerQuestion);
+afterButton.addEventListener("click", init);
 
 //INITIALIZATION
 init();
