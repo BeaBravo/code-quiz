@@ -4,6 +4,7 @@ var startPage = document.querySelector("#start-page");
 var gamePage = document.querySelector("#quiz-questions");
 var questionDisplay = document.querySelector("#current-question");
 var choices = document.querySelector("#multiple-choice");
+var option = choices.children;
 
 //Global variables
 // questions as objects with the answers
@@ -29,11 +30,7 @@ var question2 = {
 var questions = [question1, question2];
 
 //FUNCTIONS
-function init() {
-  i = 1;
-  console.log(question1);
-  console.log(questions);
-}
+function init() {}
 
 //
 
@@ -46,20 +43,17 @@ function startQuiz() {
   //go to first question
   displayQuestion();
 }
-
+var index = 0;
 function displayQuestion() {
   //grab question from questions variable and make <li>
-  // answer question and save the click with event.target
-  var index = 0;
+  // answer question and save the click with event.targe
   var currentQuestion = questions[index];
+  var li = 0;
   questionDisplay.textContent = currentQuestion.question;
   for (i = 1; i < 5; i++) {
-    var option = document.createElement("li");
-    option.textContent = currentQuestion["option" + i];
-    choices.appendChild(option);
+    option[li].textContent = currentQuestion["option" + i];
+    li++;
   }
-  var answer = answerQuestion();
-  console.log(answer);
 }
 
 function answerQuestion(event) {
@@ -67,7 +61,12 @@ function answerQuestion(event) {
   console.log("you clicked an option");
   //click 1 of the 4 answers and save this as the answer
   var answer = event.target;
-  // console.log(answer);
+  //goes to the next question
+  index++;
+  if (index >= questions.length) {
+    return;
+  }
+  displayQuestion();
   return answer;
 }
 
