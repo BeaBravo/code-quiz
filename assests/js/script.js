@@ -43,10 +43,6 @@ var questions = [question1, question2];
 function init() {
   timeLeft = 60;
   timerEl.textContent = "time: " + timeLeft;
-  startPage.setAttribute("style", "display:block");
-  gamePage.setAttribute("style", "display:none");
-  afterWindow.setAttribute("style", "display:none");
-  highScoresPage.setAttribute("style", "display:none");
 }
 
 //
@@ -73,7 +69,8 @@ function startTimer() {
   }, 1000);
 }
 
-function startQuiz() {
+function startQuiz(event) {
+  event.stopPropagation();
   //make start page disappear and question div appear
   startPage.setAttribute("style", "display:none");
   gamePage.setAttribute("style", "display:block");
@@ -93,6 +90,7 @@ function displayQuestion() {
     option[li].textContent = currentQuestion["option" + i];
     li++;
   }
+  console.log(currentQuestion.question);
   return currentQuestion;
 }
 
@@ -140,11 +138,21 @@ function winGame() {
   //show highscores
 }
 
+function playAgain(event) {
+  event.stopPropagation();
+  index = 0;
+  startPage.setAttribute("style", "display:block");
+  gamePage.setAttribute("style", "display:none");
+  afterWindow.setAttribute("style", "display:none");
+  highScoresPage.setAttribute("style", "display:none");
+  init();
+}
+
 //USER INTERACTIONS
 
 startButton.addEventListener("click", startQuiz);
 choices.addEventListener("click", answerQuestion);
-afterButton.addEventListener("click", init);
+afterButton.addEventListener("click", playAgain);
 
 //INITIALIZATION
 init();
