@@ -45,11 +45,66 @@ var question2 = {
   correct: "option4",
 };
 
-var questions = [question1, question2];
+var question3 = {
+  question:
+    "Which of the following methods can be used to display data in some form using JavaScript?",
+  option1: "document.write()",
+  option2: "console.log()",
+  option3: "window.alert()",
+  option4: "all of the above",
+  correct: "option4",
+};
+
+var question4 = {
+  question: "What is a function() known as when not defining a name for it?",
+  option1: "undefined",
+  option2: "anonymous",
+  option3: "unnamed",
+  option4: "this is not possible in JavaScript",
+  correct: "option2",
+};
+
+var question5 = {
+  question:
+    "Which funtion is used to serialize an object into a JSON string in JavaScript",
+  option1: "stringfy()",
+  option2: "parse()",
+  option3: "switch()",
+  option4: "convert()",
+  correct: "option1",
+};
+
+var question6 = {
+  question: "How to stop an interval timer in JavaScript",
+  option1: "clearTimer",
+  option2: "stopInterval",
+  option3: "clearInterval",
+  option4: "stopTimer",
+  correct: "option3",
+};
+
+var question7 = {
+  question: "How do we write a comment in JavaScript",
+  option1: "/**/",
+  option2: "//",
+  option3: "<!-- -->",
+  option4: "all of the above",
+  correct: "option2",
+};
+
+var questions = [
+  question1,
+  question2,
+  question3,
+  question4,
+  question5,
+  question6,
+  question7,
+];
 
 //FUNCTIONS
 function init() {
-  timeLeft = 10;
+  timeLeft = 60;
   timerEl.textContent = "time: " + timeLeft;
   message.textContent = "";
   afterMessage.nextSibling.textContent = "";
