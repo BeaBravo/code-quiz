@@ -21,18 +21,18 @@
         </p>
         <button id="start-button">Start Quiz!</button>
       </div>
-      <div id="quiz-questions">
+      <div id="quiz-questions" style="display: none">
         <h1 id="current-question">the question will be displayed here</h1>
         <ol id="multiple-choice">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>option1</li>
+          <li>option2</li>
+          <li>option3 to show a little longer text</li>
+          <li>option4</li>
         </ol>
         <h3 id="message"></h3>
       </div>
       <div id="after-game-window" style="display: none">
-        <h1 id="after-message"></h1>
+        <h1 id="after-message">Message showing if you won or lost</h1>
         <p></p>
         <form id="highscore-form" method="POST" style="display: none">
           <label for="initials-text">Enter your initials: </label>
@@ -48,7 +48,11 @@
 
       <div id="highscores-window" style="display: none">
         <h1 id="highsores">High Scores</h1>
-        <ul id="highscore-list"></ul>
+        <ul id="highscore-list">
+          <li>dummy bullet for styling</li>
+          <li>this must be deleted before submitting!!!</li>
+          <li>DONT FORGET TO DELETE IT!!!</li>
+        </ul>
       </div>
 
       <script src="./assests/js/script.js"></script>

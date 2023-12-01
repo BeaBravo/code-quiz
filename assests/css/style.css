@@ -1,14 +1,32 @@
-#quiz-questions {
-  display: none;
+:root {
+  --background-color: #9a275a;
+  --text-color: #e2c6c2;
+  --border-color: #cb958e;
+  --selection-color: #e2bfba;
+}
+
+::selection {
+  background-color: var(--selection-color);
+  color: var(--background-color);
 }
 
 * {
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial,
+    sans-serif;
 }
-
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
 header {
   display: flex;
+  color: var(--background-color);
   justify-content: space-between;
+  width: 100vh;
 }
 
 main {
@@ -17,10 +35,67 @@ main {
   margin: 2rem;
   width: 75vh;
   align-items: center;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 main div {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
+}
+
+h1 {
+  margin-bottom: 0.25em;
+  text-align: center;
+}
+
+#highscores:hover {
+  cursor: pointer;
+}
+
+#multiple-choice {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+#multiple-choice li {
+  line-height: 1.5em;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+#multiple-choice li:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+#highscore-list {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  line-height: 1.5em;
+}
+
+#start-button,
+#after-button {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--background-color);
+}
+
+#after-button {
+  margin-top: 1rem;
+}
+
+#start-button:hover,
+#after-button:hover {
+  opacity: 0.75;
+  cursor: pointer;
 }
