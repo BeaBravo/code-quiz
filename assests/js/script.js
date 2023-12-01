@@ -224,7 +224,6 @@ highScoreForm.addEventListener("submit", function (event) {
 
 viewHighScores.addEventListener("click", function (event) {
   event.stopPropagation();
-  startPage.setAttribute("style", "display:none");
   displayHighScores();
 });
 
