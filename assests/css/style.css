@@ -76,6 +76,7 @@ h1 {
   padding-right: 10px;
   text-decoration: none;
   width: fit-content;
+  border-radius: 20px;
 }
 
 /* when the user hover the option the opacity will turn down and the pointer will change */
@@ -98,6 +99,7 @@ h1 {
   background-color: var(--background-color);
   color: var(--text-color);
   border-color: var(--background-color);
+  border-radius: 20px;
 }
 
 #after-button {
