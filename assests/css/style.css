@@ -1,3 +1,4 @@
+/* Colour Pallette */
 :root {
   --background-color: #9a275a;
   --text-color: #e2c6c2;
@@ -5,16 +6,14 @@
   --selection-color: #e2bfba;
 }
 
-::selection {
-  background-color: var(--selection-color);
-  color: var(--background-color);
-}
-
+/* All elements styling  */
 * {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial,
     sans-serif;
 }
+
+/* Body styling */
 body {
   display: flex;
   flex-direction: column;
@@ -22,6 +21,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Header styling */
 header {
   display: flex;
   color: var(--background-color);
@@ -29,6 +30,7 @@ header {
   width: 100vh;
 }
 
+/* Main section styling  */
 main {
   display: flex;
   flex-direction: column;
@@ -39,27 +41,32 @@ main {
   padding-left: 2rem;
 }
 
+/* all div's inside of main styling */
 main div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* all h1 styling  */
 h1 {
   margin-bottom: 0.25em;
   text-align: center;
 }
 
+/* when the user hovers 'View High Score' the cursor will change to pointer */
 #highscores:hover {
   cursor: pointer;
 }
 
+/* No bullets and no padding for the choices of the quiz question */
 #multiple-choice {
   list-style-type: none;
   padding: 0;
   text-align: center;
 }
 
+/* quiz answer options styling */
 #multiple-choice li {
   line-height: 1.5em;
   background-color: var(--background-color);
@@ -71,11 +78,13 @@ h1 {
   width: fit-content;
 }
 
+/* when the user hover the option the opacity will turn down and the pointer will change */
 #multiple-choice li:hover {
   opacity: 0.75;
   cursor: pointer;
 }
 
+/* no bullet points for the high score list  */
 #highscore-list {
   list-style-type: none;
   text-align: center;
@@ -83,6 +92,7 @@ h1 {
   line-height: 1.5em;
 }
 
+/* styling for buttons */
 #start-button,
 #after-button {
   background-color: var(--background-color);
@@ -94,6 +104,7 @@ h1 {
   margin-top: 1rem;
 }
 
+/* when the user hover the buttons the opacity will turn down and the pointer will change */
 #start-button:hover,
 #after-button:hover {
   opacity: 0.75;
